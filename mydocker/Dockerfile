@@ -5,6 +5,8 @@ FROM harbor.spdiotdev.tech/docker/ubuntu:20.04
 # env https_proxy "http://192.168.200.26:51837"
 
 # ENV HOME=/workspace
+ENV DEBIAN_FRONTEND=noninteractive
+
 
 # # update permissions & change user to not run as root
 WORKDIR /workspace
@@ -25,6 +27,7 @@ RUN echo 'Asia/Shanghai' > /etc/timezone && \
     apt-get update 
 
 RUN apt-get update && apt-get install -y \
+    tzdata \
     build-essential \
     libssl-dev \
     libffi-dev \
@@ -37,7 +40,6 @@ RUN apt-get update && apt-get install -y \
     zlib1g-dev \
     liblzma-dev \
     openssh-server \
-    pdsh \
     net-tools \
     iputils-ping \
     vim \
@@ -48,7 +50,9 @@ RUN apt-get update && apt-get install -y \
 # 下载 Miniconda 安装脚本
 RUN curl -fsSL https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o /miniconda.sh && \
     bash /miniconda.sh -b -p /opt/conda && \
-    rm /miniconda.sh 
+    rm /miniconda.sh && \
+    ln -fs /usr/share/zoneinfo/Asia/Shanghai /etc/localtime && \
+    dpkg-reconfigure --frontend noninteractive tzdata
 
 ENV PATH="/opt/conda/bin:$PATH"
 
