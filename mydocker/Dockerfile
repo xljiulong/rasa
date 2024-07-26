@@ -36,6 +36,11 @@ RUN apt-get update && apt-get install -y \
     libgdbm-dev \
     zlib1g-dev \
     liblzma-dev \
+    openssh-server \
+    pdsh \
+    net-tools \
+    iputils-ping \
+    vim \
     curl \
     git \
     && rm -rf /var/lib/apt/lists/*
