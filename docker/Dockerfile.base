@@ -1,5 +1,5 @@
 # The base image used for all images
-FROM ubuntu:22.04
+FROM harbor.spdiotdev.tech/docker/ubuntu:22.04
 
 ENV DEBIAN_FRONTEND="noninteractive"
 

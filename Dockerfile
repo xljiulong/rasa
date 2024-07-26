@@ -4,6 +4,11 @@ ARG BASE_IMAGE_HASH
 ARG BASE_BUILDER_IMAGE_HASH
 
 FROM ${IMAGE_BASE_NAME}:base-builder-${BASE_BUILDER_IMAGE_HASH} as builder
+ENV SHELL /bin/bash
+
+env http_proxy "http://192.168.200.26:51837"
+env https_proxy "http://192.168.200.26:51837"
+
 # copy files
 COPY . /build/
 
@@ -14,6 +19,7 @@ WORKDIR /build
 RUN python -m venv /opt/venv && \
   . /opt/venv/bin/activate && \
   pip install --no-cache-dir -U "pip==22.*" -U "wheel>0.38.0" && \
+  poetry config installer.max-workers 10 && \
   poetry install --no-dev --no-root --no-interaction && \
   poetry build -f wheel -n && \
   pip install --no-deps dist/*.whl && \

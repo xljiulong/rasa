@@ -24,6 +24,13 @@ license = "Apache-2.0"
 [[tool.poetry.source]]
 name = "internal repository mirroring psycopg binary for macos"
 url = "https://europe-west3-python.pkg.dev/rasa-releases/psycopg-binary/simple/"
+priority = "primary"
+
+
+[[tool.poetry.source]]
+name = "tsinghua"
+url = "https://pypi.tuna.tsinghua.edu.cn/simple"
+priority = "primary"
 
 [tool.towncrier]
 package = "rasa"

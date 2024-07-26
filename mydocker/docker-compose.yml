@@ -1,0 +1,17 @@
+version: '3'
+services:
+  rasa_dev:
+    build:
+      context: ../
+      dockerfile: mydocker/Dockerfile
+    image: harbor.spdiotdev.tech/docker/ubuntu:22.04
+    # runtime: nvidia
+    container_name: rasa_dev
+    tty: true
+    restart: always
+    ulimits:
+      memlock: -1
+      stack: 67108864
+    shm_size: 40G
+    volumes:
+      - /home/zhangjl19/:/workspace
