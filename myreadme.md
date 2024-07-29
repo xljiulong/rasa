@@ -1,3 +1,10 @@
+# 系统操作
+## 设置代理
+```
+export http_proxy=http://<proxy_host>:<proxy_port>
+export https_proxy=http://<proxy_host>:<proxy_port>
+```
+
 # 容器下载
 ```
 docker pull harbor.spdiotdev.tech/docker/ubuntu:22.04
@@ -36,4 +43,11 @@ poetry source add tsinghua https://pypi.tuna.tsinghua.edu.cn/simple
 ## 导出requirements
 ```
 poetry export -f requirements.txt -o requirements.txt --without-hashes --dev
+```
+
+## 附加依赖
+```
+setuptools==40.8.0
+filelock==3.15.4
+platformdirs==3.9.1
 ```
