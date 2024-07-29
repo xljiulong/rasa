@@ -9,6 +9,7 @@ export https_proxy=http://<proxy_host>:<proxy_port>
 ```
 docker pull harbor.spdiotdev.tech/docker/ubuntu:22.04
 ```
+
 # 容器构建
 ```
 docker build -f Dockerfile -t rasa-dev:0.1 .
