@@ -6,8 +6,8 @@ ARG BASE_BUILDER_IMAGE_HASH
 FROM ${IMAGE_BASE_NAME}:base-builder-${BASE_BUILDER_IMAGE_HASH} as builder
 ENV SHELL /bin/bash
 
-env http_proxy "http://192.168.200.26:51837"
-env https_proxy "http://192.168.200.26:51837"
+# env http_proxy "http://192.168.200.26:51837"
+# env https_proxy "http://192.168.200.26:51837"
 
 # copy files
 COPY . /build/
@@ -35,12 +35,12 @@ COPY --from=builder /opt/venv /opt/venv
 ENV PATH="/opt/venv/bin:$PATH"
 
 # set HOME environment variable
-ENV HOME=/app
+# ENV HOME=/app
 
 # update permissions & change user to not run as root
 WORKDIR /app
-RUN chgrp -R 0 /app && chmod -R g=u /app && chmod o+wr /app
-USER 1001
+# RUN chgrp -R 0 /app && chmod -R g=u /app && chmod o+wr /app
+# USER 1001
 
 # create a volume for temporary data
 VOLUME /tmp
