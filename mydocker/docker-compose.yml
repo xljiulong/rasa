@@ -4,7 +4,7 @@ services:
     build:
       context: ../
       dockerfile: mydocker/Dockerfile
-    image: harbor.spdiotdev.tech/docker/ubuntu:22.04
+    image: rasa-dev:0.0.1
     # runtime: nvidia
     container_name: rasa_dev
     tty: true
