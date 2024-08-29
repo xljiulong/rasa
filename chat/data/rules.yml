@@ -1,0 +1,33 @@
+version: "3.1"
+
+rules:
+- rule: welcome user on conversation
+  conversation_start: true
+  steps:
+  - intent: greet
+  - action: utter_welcome
+
+- rule: activate consulting form
+  steps:
+  - intent: consulting
+  - action: consulting_form
+  - active_loop: consulting_form
+
+- rule: submit form
+  condition:
+  - active_loop: consulting_form
+  steps:
+  - action: consulting_form
+  - active_loop: null
+  - action: action_return_agency
+  - action: utter_ask_more_service
+
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot

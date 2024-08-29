@@ -1,0 +1,86 @@
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - GetInfoWinLossRecord
+  - consulting
+  - inform
+  - providing_city
+
+forms:
+  consulting_form:
+    required_slots:
+      - citem
+      - city
+
+
+entities:
+  - team
+  - city
+  - citem
+
+slots:
+  team:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: team
+  city:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: city
+  citem:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: citem
+        
+
+actions:
+  - action_win_loss_record
+  - action_consult
+  - action_return_agency
+  - action_ask_more_service
+
+responses:
+  utter_welcome:
+  - text: "尊敬的红旗客户你好，我是智能客服旗旗，如需经销商信息，请说咨询经销商，开通智联服务，请说开通红旗智联，保养预约问题，请说预约保养。"
+  utter_ask_city:
+  - text: "请问您想咨询哪个城市的经销商呢？"
+  utter_ask_citem:
+  - text: "请问您想咨询什么方面？"
+
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  utter_submit:
+  - text: "您的请求已经提交。"
+  utter_ask_more_service:
+  - text: "请问还有什么可以帮您？"
+
+session_config:
+  session_expiration_time: 60
+  # carry_over_slots_to_new_session: true

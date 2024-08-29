@@ -15,12 +15,21 @@
             "name": "debug_rasa_train",
             "type": "debugpy",
             "request": "launch",
+            // "module": "poetry",
             // "program": "/workspace/projects/LLaMA-Factory/src/train_bash.py",
             "program": "/workspace/projects/rasa/rasa/__main__.py",
             "console": "integratedTerminal",
             "justMyCode": false,
             "args": [
-                "train"
+                "train",
+                "--data",
+                "/workspace/projects/rasa/chat/data",
+                "--config",
+                "/workspace/projects/rasa/chat/config.yml",
+                "--domain",
+                "/workspace/projects/rasa/chat/domain.yml",
+                "--out",
+                "/workspace/projects/rasa/chat/debug_models"
             ],
         },
     ]

@@ -27,8 +27,8 @@ license = "Apache-2.0"
 # url = "https://europe-west3-python.pkg.dev/rasa-releases/psycopg-binary/simple/"
 
 [[tool.poetry.source]]
-name = "aliyun"
-url = "https://mirrors.aliyun.com/pypi/simple/"
+name = "tsinghua"
+url = "https://pypi.tuna.tsinghua.edu.cn/simple/"
 priority = "primary"
 
 [tool.towncrier]
@@ -302,7 +302,7 @@ extras = [ "sentencepiece",]
 
 [tool.poetry.dependencies.jieba]
 version = ">=0.39, <0.43"
-optional = true
+optional = false
 
 [tool.poetry.dependencies.pymongo]
 version = ">=3.8,<4.4"
